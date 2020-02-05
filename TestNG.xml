@@ -1,0 +1,15 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Tires Suite" parallel="false">
+    <test name="SearchSelector">
+        <groups>
+            <run>
+                <include name="Regression"/>
+                <exclude name="SKIP"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="BaseTest"/>
+            <class name = "SortingCheck"/>
+        </classes>
+    </test>
+</suite>
