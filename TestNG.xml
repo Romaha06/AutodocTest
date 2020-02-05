@@ -9,7 +9,7 @@
         </groups>
         <classes>
             <class name="BaseTest"/>
-            <class name = "SortingCheck"/>
+            <class name = "CheckSortingTest"/>
         </classes>
     </test>
 </suite>

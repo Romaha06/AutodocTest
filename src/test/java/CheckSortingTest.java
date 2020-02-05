@@ -6,15 +6,15 @@ import org.testng.annotations.Test;
 
 import static com.codeborne.selenide.Condition.*;
 
-public class SortingCheck extends BaseTest {
+public class CheckSortingTest extends BaseTest {
 
     MainPage mainPage = new MainPage();
     PhonesTvAndElectronicsPage phonesTvAndElectronicsPage = new PhonesTvAndElectronicsPage();
     PhonesHeadphonesAndGPSCatalog phonesHeadphonesAndGPSCatalog = new PhonesHeadphonesAndGPSCatalog();
     PhonesListing phoneListing = new PhonesListing();
 
-    @Test (groups = {"Regression"})
-    public void getTopItemsToFileFrom3PagesTest(){
+    @org.testng.annotations.Test(groups = {"Regression"})
+    public void getTopItemsToFileFrom3PagesAndCheckSortingTest(){
         mainPage.openPhonesTvAndElectronicsCatalog();
         phonesTvAndElectronicsPage.titlePage.shouldBe(visible);
         phonesTvAndElectronicsPage.openPhoneHeadphonesAndGPSCatalog();
