@@ -7,12 +7,14 @@ import static com.codeborne.selenide.Selenide.page;
 
 public class PhonesHeadphonesAndGPSCatalog {
 
+    PhonesListing phonesListing = new PhonesListing();
+
     private SelenideElement mobilePhoneListing = $x("//li[@class='portal-navigation__item']//span[text()=' Мобильные телефоны ']");
-    public static SelenideElement titleCatalog = $x("//h1[@class='catalog-heading']");
+    public  SelenideElement titleCatalog = $x("//h1[@class='catalog-heading']");
 
     public PhonesListing openMobilePhoneListing() {
         mobilePhoneListing.click();
-        PhonesListing.listingTitle.shouldBe(visible);
+        phonesListing.listingTitle.shouldBe(visible);
         return page(PhonesListing.class);
     }
 }
