@@ -9,7 +9,6 @@ public class BaseTest {
 
     @BeforeMethod (groups = {"Regression"})
     public void openUrl() {
-
         Configuration.startMaximized = true;
         Configuration.timeout = 10000;
         open("https://rozetka.com.ua/");
