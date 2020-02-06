@@ -18,7 +18,7 @@ public class PhonesListing {
     public static ArrayList<String> listOfTopSalesItems = new ArrayList<>();
     private File topItemsFile = new File("C:\\Autodoc\\result.txt");
 
-    public static SelenideElement listingTitle = $x("//h1[@class='catalog-heading']");
+    public SelenideElement listingTitle = $x("//h1[@class='catalog-heading']");
 
     private SelenideElement sortingSelector = $x("//select[@class='select-css ng-untouched ng-pristine ng-valid']"),
                             moreCatalogItems = $x("//span[@class='catalog-more__text']");
