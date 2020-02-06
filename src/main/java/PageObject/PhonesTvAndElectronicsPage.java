@@ -7,8 +7,6 @@ import static com.codeborne.selenide.Selenide.page;
 
 public class PhonesTvAndElectronicsPage {
 
-    PhonesHeadphonesAndGPSCatalog phonesHeadphonesAndGPSCatalog = new PhonesHeadphonesAndGPSCatalog();
-
     private SelenideElement smartphoneAndPortDevicesCatalog = $x("//li//a[2][@title='Смартфоны и портативная техника']"),
                             closePopup = $x("//span[@class='exponea-close-cross']");
 
@@ -19,7 +17,7 @@ public class PhonesTvAndElectronicsPage {
         smartphoneAndPortDevicesCatalog.scrollTo();
         closePopup.click();
         smartphoneAndPortDevicesCatalog.click();
-        phonesHeadphonesAndGPSCatalog.titleCatalog.shouldBe(visible);
+        new PhonesHeadphonesAndGPSCatalog().titleCatalog.shouldBe(visible);
         return page (PhonesHeadphonesAndGPSCatalog.class );
     }
 }
