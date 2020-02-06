@@ -18,23 +18,22 @@ public class PhonesListing {
     public static ArrayList<String> listOfTopSalesItems = new ArrayList<>();
     private File topItemsFile = new File("C:\\Autodoc\\result.txt");
 
-    public SelenideElement listingTitle = $x("//h1[@class='catalog-heading']");
+    public static SelenideElement listingTitle = $x("//h1[@class='catalog-heading']");
 
     private SelenideElement sortingSelector = $x("//select[@class='select-css ng-untouched ng-pristine ng-valid']"),
-                            loadMoreItem = $x("//span[@class='catalog-more__text']");
+                            moreCatalogItems = $x("//span[@class='catalog-more__text']");
 
     private ElementsCollection topSalesItems = $$x("//span[contains(@class,'promo-label_type_popularity')]/ancestor::div[@class='goods-tile']"),
                                labelPrices = $$x("//span[@class='goods-tile__price-value']");
 
 
-
-
-    public void goToPage() {
-        loadMoreItem.scrollTo().click();
+    public PhonesListing loadMoreItem() {
+        moreCatalogItems.scrollTo().click();
+        return this;
     }
 
 
-    public void saveTopSalesItemsTo(ArrayList<String> list) {
+    public PhonesListing saveTopSalesItemsTo(ArrayList<String> list) {
         if (topSalesItems.size() > 0) {
             for (SelenideElement itemBox : topSalesItems) {
                 String name = itemBox.$x(".//a[@class='goods-tile__heading']").getAttribute("title");
@@ -43,10 +42,11 @@ public class PhonesListing {
                 list.add(lineForRecord);
             }
         }
+        return this;
     }
 
 
-    public void writeTopSalesItemsToFileFrom(ArrayList<String> list) {
+    public PhonesListing writeTopSalesItemsToFileFrom(ArrayList<String> list) {
         FileWriter filewriter = null; //Обьявил ссылку на класс FileWriter
         try {
             if (!topItemsFile.exists()) {
@@ -71,16 +71,18 @@ public class PhonesListing {
                 e.printStackTrace();
             }
         }
+        return this;
     }
 
 
-    public void selectSortOrderFromCheaper() {
+    public PhonesListing selectSortOrderFromCheaper() {
         sortingSelector.selectOptionByValue("1: cheap");
         sleep(2000);
+        return this;
     }
 
 
-    public void checkSortingByPrice(boolean naturalOrder) {
+    public PhonesListing checkSortingByPrice(boolean naturalOrder) {
         //получаем текст цены, парсим цифры, превращаем в Double и записываем в список pricesFromSite
         List<Double> pricesFromSite = new ArrayList<>();
         for (SelenideElement element : labelPrices) {
@@ -97,6 +99,7 @@ public class PhonesListing {
             Collections.sort(sortedPrices, Collections.reverseOrder()); //по убыванию
         }
         Assert.assertEquals(pricesFromSite, sortedPrices);
+        return this;
     }
 }
 
